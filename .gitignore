@@ -120,3 +120,4 @@ dist
 
 # 本地测试npm包
 ZegoUIKitPrebuiltCall
+src/keyCenter.ts
