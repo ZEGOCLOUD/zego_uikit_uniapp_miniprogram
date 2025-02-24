@@ -1,0 +1,73 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// 分包
+		// {
+		// 	"path": "pages/example/subPackages/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "sub-packages"
+		// 	}
+		// },
+		{
+			"path": "pages/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/example/privacy"
+		},
+		{
+			"path": "pages/example/terms"
+		},
+		{
+			"path": "pages/example/call/index",
+			"style": {
+				"navigationBarTitleText": "Call"
+			}
+		},
+		{
+			"path": "pages/example/call_invitation/index",
+			"style": {
+				"navigationBarTitleText": "Call Invitation"
+			}
+		},
+		{
+			"path": "zego_uikit_prebuilt_call/src/pages/call_invitation/InvitationCall",
+			"style": {
+				"navigationBarTitleText": "Call Invitation"
+			}
+		},
+		{
+			"path": "zego_uikit_prebuilt_call/src/pages/call/SingleCall",
+			"style": {
+				"navigationBarTitleText": "Call"
+			}
+		}
+	],
+	// "subPackages": [
+	// 	{
+	// 		"root": "ZegoUIKitPrebuiltCall",
+	// 		"pages": [
+	// 			{
+	// 				"path": "pages/index",
+	// 				"style": {
+	// 					"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
+	// 				}
+	// 			},
+	// 			{
+	// 				"path": "pages/single",
+	// 				"style": {
+	// 					"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
+	// 				}
+	// 			}
+	// 		]
+	// 	}
+	// ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "UIKits-Call",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

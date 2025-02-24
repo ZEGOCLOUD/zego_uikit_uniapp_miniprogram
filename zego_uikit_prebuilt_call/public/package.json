@@ -1,0 +1,15 @@
+{
+  "name": "@zegocloud/zego-uikit-prebuilt-call-mini-program",
+  "version": "2.0.4",
+  "description": "zegocloud prebuilt meeting rtc sdk",
+  "main": "./index.js",
+  "typings": "./src/index.d.ts",
+  "access": "public",
+  "keywords": [
+    "sdk",
+    "zego",
+    "zegocloud",
+    "rtc"
+  ],
+  "license": "ISC"
+}

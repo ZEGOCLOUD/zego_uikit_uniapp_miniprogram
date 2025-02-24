@@ -1,0 +1,27 @@
+{
+  "name": "zego_uikit_uniapp_miniprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zegocloud/zego-uikit-prebuilt-call-mini-program": "^2.0.0",
+    "crypto-js": "^4.2.0",
+    "eslint": "^8.56.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^20.12.13",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12",
+    "vue": "^3.4.27"
+  }
+}

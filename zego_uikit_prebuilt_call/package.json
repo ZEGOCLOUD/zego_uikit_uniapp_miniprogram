@@ -1,0 +1,36 @@
+{
+  "name": "@zegocloud/zego-uikit-prebuilt-call-mini-program",
+  "version": "2.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "updateVersion": "node ./script/updateVersion.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.9.0",
+    "vue-loader": "^17.4.2",
+    "zego-express-engine-miniprogram": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "eslint": "^8.56.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "vue": "^3.4.27",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "zego-express-engine-webrtm": "^2.4.0"
+  }
+}
