@@ -8,8 +8,6 @@ export async function startPush(pushStreamID: string, publishOption?: ZegoWxPubl
     try {
         /** 开始推流，返回推流地址 */
         const { url } = await UIKitCore.getInstance().express.startPublishingStream(pushStreamID, publishOption);
-        // 推送流附加消息
-        // UIKitCore.getInstance().express.setStreamExtraInfo(pushStreamID, publishOption?.extraInfo!);
         zloginfo('startPush for pushStreamID=', pushStreamID, ' url=', url);
         const pushContext = UIKitCore.createLivePusherContext();
         pushContext.start();
@@ -51,7 +49,7 @@ export async function startPlay(streamID: string): Promise<PlayConfig | false> {
                     url,
                     streamID: streamID,
                     playerContext,
-                    objectFit: 'fillCrop',
+                    objectFit: 'contain',
                     muteAudio: false,
                     enableMetadata: true,
                 }

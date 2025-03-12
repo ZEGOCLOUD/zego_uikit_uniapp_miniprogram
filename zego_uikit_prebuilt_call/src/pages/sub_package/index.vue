@@ -68,14 +68,13 @@ const userID = ref<string>(getRandomIndex());
 let userName= ref<string>("");
 const LISTENER_ID = makePrebuiltListenerID(); // 生成回调ID
 const isUIKitShow = ref<boolean>(false);
-const isSingleCallShow = ref<boolean>(false);
 
 onMounted(() => {
 	const instance = getCurrentInstance()?.proxy;
 	// @ts-ignore
     const eventChannel = instance?.getOpenerEventChannel();
 	if (eventChannel) {
-		eventChannel.on('acceptDataFromOpenerPage', function(data) {
+		eventChannel.on('acceptDataFromOpenerPage', function(data: any) {
 			console.log('acceptDataFromOpenerPage', data, ZegoUIKitPrebuiltCall);
 			userID.value = data.userID;
 			userName.value = data.userName;
@@ -121,8 +120,8 @@ onMounted(() => {
 				}
 			}
 			
-			ZegoUIKitPrebuiltCall.init(data.appID, data.server, data.userID, data.userName, data.token, data.config, events)
-				.then((res)=>{
+			ZegoUIKitPrebuiltCall.init(data.APPID, data.SERVER, data.userID, data.userName, data.token, data.config, events)
+				.then((res: any)=>{
 					console.log('[demo]init res', res);
 					// 测试发起通话邀请接口
 					// const callees = [{userID: '02181', userName: 'user_02181'}];
@@ -130,7 +129,7 @@ onMounted(() => {
 					// 	!res.code && ZegoUIKitPrebuiltCall.onInvitationSent(1, callees)
 					// });
 				})
-				.catch((err)=>{
+				.catch((err: any)=>{
 					console.log('[demo]init err', err);
 					showToast('初始化失败，请稍后重试');
 				});

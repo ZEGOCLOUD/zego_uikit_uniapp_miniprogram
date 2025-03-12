@@ -295,7 +295,8 @@ export default class UIKitCore {
                     hasVideo: true,
                     hasAudio: true,
                 })
-                const publishOption = { extraInfo }
+                const publishOption = { extraInfo };
+                zlogwarning("[UIKitCore]joinRoom startPush", publishOption);
                 const pusher = await startPush(streamID, publishOption);
                 // 更新房间用户列表
                 this.localUser = {
@@ -365,7 +366,7 @@ export default class UIKitCore {
     }
 
     public logoutRoom() {
-        zlogwarning('[UIKitCore]logoutRoom', this.localUser);
+        zlogwarning('[UIKitCore]logoutRoom', this.localUser, this.roomID);
         // 停止推流
         try {
             this.localUser?.streamConfig.pusherContext.stop();

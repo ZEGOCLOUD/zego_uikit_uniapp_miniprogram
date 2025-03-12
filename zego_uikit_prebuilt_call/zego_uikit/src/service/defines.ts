@@ -163,6 +163,7 @@ export interface ZegoCallInvitationListener {
     onCallInvitationTimeoutofInvitee?: (callID: string, caller: ZegoUIKitUser) => void;
     onZIMTokenWillExpire?: () => void
     onCallEnded?: () => void
+    onZIMConnectionStateChanged?: (state: number) => void
 }
 
 export interface ZegoUIKitListener {

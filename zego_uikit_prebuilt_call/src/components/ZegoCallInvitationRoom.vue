@@ -20,9 +20,10 @@ const turnOnCameraWhenJoining = ref(ZegoUIKitPrebuiltCall.getConfig().turnOnCame
 const turnOnMicrophoneWhenJoining = ref(ZegoUIKitPrebuiltCall.getConfig().turnOnMicrophoneWhenJoining ?? false);
 const LISTENER_ID = makePrebuiltListenerID() // 生成回调ID
 let lastestUserList: ZegoUIKitUser[] = [];
+let leaveRoomTimer: any = null;
 
 onMounted(() => {
-    nextTick(() => joinRoom());
+    nextTick(() => authCheck());
     ZegoUIKitPrebuiltCall.addUIKitListener(LISTENER_ID, {
         onUserLeaved: (user) => {
             const localUser = ZegoUIKitPrebuiltCall.getLocalUser()
@@ -57,12 +58,14 @@ onMounted(() => {
     // bindUniEvents();
 })
 onUnmounted(() => {
+    console.warn('[ZegoCallInvitationRoom]onUnmounted');
     clearTimeout(hideTimer);
+    clearTimeout(leaveRoomTimer);
     ZegoUIKitPrebuiltCall.removeUIKitListener(LISTENER_ID);
     // removeUniEvents();
 })
 
-const joinRoom = async () => {
+const authCheck = async () => {
     // 检测设备权限, 里面会弹窗
     const hardCheck = await ZegoUIKitPrebuiltCall.authCheck();
     if (!hardCheck) {
@@ -70,7 +73,7 @@ const joinRoom = async () => {
     }
     // 被邀请者进房后仅自己在房间时退出房间
     // if (ZegoUIKitPrebuiltCall.getCurrentRole() === ZegoCallInvitationRole.invitee) {
-    setTimeout(() => {
+    leaveRoomTimer = setTimeout(() => {
         console.log('lastestUserID', lastestUserList.map(user => user.userID).join('、'))
         if(lastestUserList.length <= 1) {
             console.log('[ZegoCallInvitationRoom]主动退出', lastestUserList);

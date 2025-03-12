@@ -46,50 +46,9 @@ onMounted(() => {
 			console.log('acceptDataFromOpenerPage', data, ZegoUIKitPrebuiltCall);
 			userID.value = data.userID;
 			userName.value = data.userName;
-			const events = {
-				onIncomingCallReceived: (callID: string, caller: ZegoUIKitUser,  callType: number, callees: ZegoUIKitUser[], customData: string) => {
-					console.warn('[demo]onIncomingCallReceived', callID, caller, callType, callees, customData);
-				},
-				onIncomingCallCanceled: (callID: string, caller: ZegoUIKitUser, customData: string) =>{
-					console.warn('[demo]onIncomingCallCanceled', callID, caller, customData);
-					showToast(`${caller.userID}已取消呼叫邀请`);
-				},
-				onIncomingCallAcceptButtonPressed: () => {
-					console.warn('[demo]onIncomingCallAcceptButtonPressed');
-				},
-				onIncomingCallDeclineButtonPressed: () => {
-					console.warn('[demo]onIncomingCallDeclineButtonPressed');
-				},
-				onOutgoingCallCancelButtonPressed: () => {
-					console.warn('[demo]onOutgoingCallCancelButtonPressed');
-				},
-				onOutgoingCallAccepted: (callID: string, calleeID: string) =>{
-					console.warn('[demo]onOutgoingCallAccepted', callID, calleeID);
-				},
-				onOutgoingCallDeclined: (callID: string, calleeID: string) =>{
-					console.warn('[demo]onOutgoingCallDeclined', callID, calleeID);
-					showToast(`${calleeID} 已拒绝`);
-				},
-				onOutgoingCallRejectedCauseBusy: (callID: string, calleeID: string, customData: string) => {
-					console.warn('[demo]onOutgoingCallRejectedCauseBusy', callID, calleeID, customData);
-					showToast( `${calleeID} 忙！`);
-				},
-				onOutgoingCallTimeout: (callID: string, calleeID: string, customData: string) => {
-					console.warn('[demo]onOutgoingCallTimeout', callID, calleeID, customData);
-					showToast('呼叫超时！');
-				},
-				onIncomingCallTimeout: (callID: string, caller: ZegoUIKitUser) => {
-					console.warn('[demo]onIncomingCallTimeout', callID, caller);
-					showToast('呼叫超时！');
-				},
-				onCallEnded: (callID: string, roomID: string) => {
-					console.warn('[demo]onCallEnded', callID, roomID);
-					showToast('呼叫结束');
-				}
-			}
 			
-			ZegoUIKitPrebuiltCall.init(data.appID, data.server, data.userID, data.userName, data.token, data.config, events)
-				.then((res)=>{
+			ZegoUIKitPrebuiltCall.init(data.APPID, data.SERVER, data.userID, data.userName, data.token, data.config)
+				.then((res: any)=>{
 					console.log('[demo]init res', res);
 					// ZegoUIKitPrebuiltCall.joinRoom(callID.value);
 					// isSingleCallShow.value = true;
@@ -99,7 +58,7 @@ onMounted(() => {
 					// 	!res.code && ZegoUIKitPrebuiltCall.onInvitationSent(1, callees)
 					// });
 				})
-				.catch((err)=>{
+				.catch((err: any)=>{
 					console.log('[demo]init err', err);
 					showToast('初始化失败，请稍后重试');
 				});

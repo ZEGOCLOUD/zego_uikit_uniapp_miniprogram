@@ -42,6 +42,9 @@ export default class InvitationService {
         },
         connectionStateChanged(zim: ZIMSDK, data: ZIMEventOfConnectionStateChangedResult){
             zlogwarning('zim connectionStateChanged', zim, data);
+            InvitationService.getInstance().invitationListeners.notifyAllListener((invitationListeners)=>{
+                invitationListeners.onZIMConnectionStateChanged?.(data.state);
+            })
         },
         callUserStateChanged(zim: ZIMSDK, data: ZIMEventOfCallUserStateChangedResult){
             zlogwarning('zim callUserStateChanged', zim, data, InvitationService.getInstance().zimCallID,  InvitationService.getInstance().caller);
@@ -342,7 +345,7 @@ export default class InvitationService {
                 return Promise.resolve({callID: this.zrtcRoomID });
             })
             .catch((err)=>{
-                zlogerror(`接受呼叫邀请失败`, err);
+                zlogerror(`接受呼叫邀请失败`, err, this.zimCallID);
                 return Promise.reject({code: err.code || 100005, message: err.message || '接受呼叫邀请失败！'});
             })
     }

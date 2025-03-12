@@ -5,6 +5,7 @@
     </view>
 </template>
 <script setup>
+import { onMounted } from 'vue';
 import { generatePrebuiltTokenTest } from "../../../src/token";
 import appConfig from '../../../src/keyCenter.ts';
 
@@ -15,18 +16,8 @@ const SERVER_SECRET = appConfig.SERVER_SECRET;
 let token = ""; // 您从服务端生成的 Token
 const userID = getRandomIndex(); // userID，需用户自己定义，保证全局唯一，建议设置为业务系统中的用户唯一标识
 const userName = `wx_${userID}`; // userName 用户名
-const config = { 
-    mode: 1,
-    turnOnCameraWhenJoining: false,
-    onTokenWillExpire: (roomID) => {
-        console.log('[demo]onTokenWillExpire', roomID);
-        // 重新获取token
-        token = generatePrebuiltTokenTest(APPID, SERVER_SECRET, userID);
-        ZegoUIKitPrebuiltCall.renewToken(token, roomID);
-    }
- }
 
- function getRandomIndex() {
+function getRandomIndex() {
 	const randomNumber = Math.floor(Math.random() * 100000); // 生成0到99999的随机整数
 	return randomNumber.toString().padStart(5, '0'); // 将数字转换为字符串，并用'0'填充到长度为5
 }
@@ -78,6 +69,13 @@ const gotoSubPackageWithInvitation = () => {
        complete: () => { },
    });
 }
+onMounted(() => {
+    console.log('AppConfig:', {
+        APPID,
+        SERVER,
+        SERVER_SECRET
+    });
+});
 </script>
 <style scoped>
 .btn {

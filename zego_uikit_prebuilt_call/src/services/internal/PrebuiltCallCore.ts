@@ -162,7 +162,12 @@ export default class PrebuiltCallCore {
             this.localUser.isCameraOn = this.customConfig.turnOnCameraWhenJoining ?? false;
             this.config.turnOnCameraWhenJoining = this.localUser.isCameraOn;
         }
-        zploginfo('joinRoom', this.config, this.customConfig, this.defaultConfig);
+        // 从语音通话切换到视频通话，未重新初始化时需要重新设置 turnOnCameraWhenJoining 的值，不然视频通话会关闭摄像头
+        if (this.type === ZegoCallInvitationType.videoCall) {
+            this.localUser.isCameraOn = this.customConfig.turnOnCameraWhenJoining ?? true;
+            this.config.turnOnCameraWhenJoining = this.localUser.isCameraOn;
+        }
+        zplogwarning('joinRoom', this.config, this.customConfig, this.defaultConfig);
         ZegoUIKit.joinRoom(callID, this.token, this.localUser, this.config);
         if (this.config.globalPagePath && this.config.mode === ZegoCallScenario.SINGLE_CALL) {
             PrebuiltCallCore.navigateTo(this.config.globalPagePath, "dataFromCall", { config: this.config });

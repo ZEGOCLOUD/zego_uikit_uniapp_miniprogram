@@ -93,6 +93,10 @@ module.exports = {
           }
         },
         {
+          from: 'src/assets', // 源资源路径
+          to: 'src/assets', // 目标路径和文件名
+        },
+        {
           from: 'zego_uikit/src/components', // 源资源路径
           to: 'src/uikit/components', // 目标路径和文件名
           transform(content: any) {

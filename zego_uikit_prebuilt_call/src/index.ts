@@ -41,16 +41,6 @@ export class ZegoUIKitPrebuiltCall {
     }
 
     /**
-     * 通过邀请加入房间
-     * @param callID 通话ID
-     * @param role 角色
-     * @returns 加入房间结果
-     */
-    static joinRoomWithInvitation(callID: string, role: ZegoCallInvitationRole) {
-        return PrebuiltCallCore.getInstance().joinRoom(callID, role);
-    }
-
-    /**
      * 发送邀请
      * @param type 邀请类型
      * @param invitees 被邀请者列表
