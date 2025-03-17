@@ -1,12 +1,11 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// 分包
-		// {
-		// 	"path": "pages/example/subPackages/index",
-		// 	"style": {
-		// 		"navigationBarTitleText": "sub-packages"
-		// 	}
-		// },
+	"pages": [
+		{
+			"path": "pages/example/subPackages/index",
+			"style": {
+				"navigationBarTitleText": "sub-packages"
+			}
+		},
 		{
 			"path": "pages/index",
 			"style": {
@@ -44,25 +43,25 @@
 			}
 		}
 	],
-	// "subPackages": [
-	// 	{
-	// 		"root": "ZegoUIKitPrebuiltCall",
-	// 		"pages": [
-	// 			{
-	// 				"path": "pages/index",
-	// 				"style": {
-	// 					"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
-	// 				}
-	// 			},
-	// 			{
-	// 				"path": "pages/single",
-	// 				"style": {
-	// 					"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
-	// 				}
-	// 			}
-	// 		]
-	// 	}
-	// ],
+	"subPackages": [
+		{
+			"root": "ZegoUIKitPrebuiltCall",
+			"pages": [
+				{
+					"path": "pages/index",
+					"style": {
+						"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
+					}
+				},
+				{
+					"path": "pages/single",
+					"style": {
+						"navigationBarTitleText": "ZegoUIKitPrebuiltCall"
+					}
+				}
+			]
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "UIKits-Call",

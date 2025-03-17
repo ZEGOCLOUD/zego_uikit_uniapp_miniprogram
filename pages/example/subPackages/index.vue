@@ -5,7 +5,6 @@
     </view>
 </template>
 <script setup>
-import { onMounted } from 'vue';
 import { generatePrebuiltTokenTest } from "../../../src/token";
 import appConfig from '../../../src/keyCenter.ts';
 
@@ -69,13 +68,6 @@ const gotoSubPackageWithInvitation = () => {
        complete: () => { },
    });
 }
-onMounted(() => {
-    console.log('AppConfig:', {
-        APPID,
-        SERVER,
-        SERVER_SECRET
-    });
-});
 </script>
 <style scoped>
 .btn {
